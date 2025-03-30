@@ -1,10 +1,13 @@
-# My Personal Project
+# My Personal Project: game mod tracing app
 
-## A subtitle
+**introduction**
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+This is an app that help people to find and download mods of games they like.
 
-An example of text with **bold** and *italic* fonts.  
+This app will show a brief introduction of the mods including which game it's from, who made this mod, and the website to download this mod.
+
+## Function
+
+- Enter mods information.
+- Search for the mod according to name.
+- Show all mods for an game.
