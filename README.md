@@ -16,3 +16,7 @@ This app will show a brief introduction of the mods including which game it's fr
 
 - As an user, I want to be able to add a mod to a collection of mods.
 - As an user, I want to be able to view all mods for a game.
+- As an user, I want to add introduction to a mod.
+- As an user, I want to view the introduction of a mod.
+- As an user, I want to change or update author to a mod.
+- As an user, I want to view the author of a mod.
