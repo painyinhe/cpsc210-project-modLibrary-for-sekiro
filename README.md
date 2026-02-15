@@ -2,15 +2,15 @@
 
 **introduction**
 
-This is an app that help people to find and download mods of games they like.
+This is an app that help people to find mods of games they like.
 
-This app will show a brief introduction of the mods including which game it's from, who made this mod, and how to attach this mod.
+This app will show a brief introduction of the mods and the author of the mod.
 
 ## Function
 
 - Enter mods information.
-- Search for the mod according to name.
-- Show all mods for an game.
+- View all mods of a game.
+- Update introduction and author of the mod.
 
 ## User Stories
 
