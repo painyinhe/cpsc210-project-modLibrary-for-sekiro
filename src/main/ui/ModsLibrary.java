@@ -42,7 +42,15 @@ public class ModsLibrary {
         if (command.equals("a")) {
             doAddMod();
         } else if (command.equals("v")) {
-            doViewMod();;
+            doViewMod();
+        } else if (command.equals("r")) {
+            doReviseIntroduction();
+        } else if (command.equals("s")) {
+            doViewIntro();
+        } else if (command.equals("c")) {
+            doUpdateAuthor();
+        } else if (command.equals("m")) {
+            doViewAuthor();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -61,6 +69,10 @@ public class ModsLibrary {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add one mod to a specific game");
         System.out.println("\tv -> view all mods of a game");
+        System.out.println("\tr -> revise the introduction of a mod");
+        System.out.println("\ts -> view the introduction of a mod");
+        System.out.println("\tc -> change the author of a mod");
+        System.out.println("\tm -> view the author of a mod");
         System.out.println("\tq -> quit");
     }
 
@@ -86,6 +98,99 @@ public class ModsLibrary {
 
         for (Mod m: game.getMods()) {
             System.out.println(m.getName());
+        }
+    }
+
+
+    //MODIFIES: this
+    //EFFECTS: revise the introduction of a mod
+    private void doReviseIntroduction() {
+        System.out.print("Please enter the name of the mod:");
+        String name = input.nextLine();
+
+        boolean found = false;
+
+        for (Mod m: game.getMods()) {
+            if (name.equals(m.getName())) {
+
+                found = true;
+                System.out.println("Please write the introduction of this mod:");
+                String intro = input.nextLine();
+                m.reviseIntroduction(intro);
+                System.out.println("The introduction of " + m.getName() + " has been updated");
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Mod " + name + " not found!");
+        }
+    }
+
+    //MODIEFIES: this
+    //EFFECTS: view the introduction of a mod
+    private void doViewIntro() {
+        System.out.print("Please enter the name of the mod that you want to see the introduction of:");
+        String name = input.nextLine();
+
+        boolean found = false;
+
+        for (Mod m: game.getMods()) {
+            if (name.equals(m.getName())) {
+
+                found = true;
+                System.out.println("Here is the introduction: " + m.getIntroduction());
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Mod " + name + " not found!");
+        }
+    }
+
+
+
+    //MODIFIES: this
+    //EFFECTS: update the author of a mod
+    private void doUpdateAuthor() {
+        System.out.print("Please enter the name of the mod:");
+        String name = input.nextLine();
+
+        boolean found = false;
+
+        for (Mod m: game.getMods()) {
+            if (name.equals(m.getName())) {
+
+                found = true;
+                System.out.println("Please enter the author's name of this mod:");
+                String author = input.nextLine();
+                m.changeAuthor(author);
+                System.out.println("The author of " + m.getName() + "has been updated");
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Mod " + name + " not found!");
+        }
+    }
+
+    //MODIEFIES: this
+    //EFFECTS: view the author of a mod
+    private void doViewAuthor() {
+        System.out.print("Please enter the name of the mod:");
+        String name = input.nextLine();
+
+        boolean found = false;
+
+        for (Mod m: game.getMods()) {
+            if (name.equals(m.getName())) {
+
+                found = true;
+                System.out.println("The author of " + m.getName() + " is " + m.getAuthor());
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Mod " + name + " not found!");
         }
     }
 }
