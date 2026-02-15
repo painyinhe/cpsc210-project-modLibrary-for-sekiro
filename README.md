@@ -1,4 +1,4 @@
-# My Personal Project: game mod tracing app
+# My Personal Project: game mod library app
 
 **introduction**
 
