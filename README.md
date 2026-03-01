@@ -20,3 +20,5 @@ This app will show a brief introduction of the mods and the author of the mod.
 - As an user, I want to view the introduction of a mod.
 - As an user, I want to change or update author to a mod.
 - As an user, I want to view the author of a mod.
+- As an user, I want to be able to save my mod list (if I so choose)
+- As an user, I want to be able to load my to-do list (if I so choose)
