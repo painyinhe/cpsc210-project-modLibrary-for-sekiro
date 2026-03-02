@@ -1,0 +1,15 @@
+{
+    "mods": [
+        {
+            "author": "Alice",
+            "name": "HUD Mod",
+            "introduction": "Better HUD for Sekiro"
+        },
+        {
+            "author": "Bob",
+            "name": "Randomizer",
+            "introduction": "Random enemies and items"
+        }
+    ],
+    "name": "Sekiro: shadow die twice"
+}
