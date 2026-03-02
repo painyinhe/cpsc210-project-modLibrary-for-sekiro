@@ -2,7 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
-public class Game {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+public class Game implements Writable {
     private String name;
     private ArrayList<Mod> mods;
 
@@ -19,7 +24,20 @@ public class Game {
         }
     }
 
+    // EFFECTS: turn this Game into a JSONObject for saving
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
 
+        JSONArray jsonMods = new JSONArray();
+        for (Mod m : mods) {
+            jsonMods.put(m.toJson());
+        }
+        json.put("mods", jsonMods);
+
+        return json;
+    }
 
     //Getters
     public ArrayList<Mod> getMods() {
