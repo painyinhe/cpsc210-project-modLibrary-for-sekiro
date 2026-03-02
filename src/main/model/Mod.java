@@ -1,6 +1,10 @@
 package model;
 
-public class Mod {
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+public class Mod implements Writable {
     
     private String name;
     private String author;
@@ -10,6 +14,12 @@ public class Mod {
         this.name = name;
         author = "Unknown";
         introduction = "The uploader haven't add any introduction";
+    }
+
+    public Mod(JSONObject json) {
+        this.name = json.getString("name");
+        this.author = json.getString("author");
+        this.introduction = json.getString("introduction");
     }
 
 
@@ -24,6 +34,16 @@ public class Mod {
     //EFFECTS: CHANGE THE NAME OF THE AUTHOR
     public void changeAuthor(String author) {
         this.author = author;
+    }
+
+    // EFFECTS: turn this Mod into a JSONObject for saving
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("author", author);
+        json.put("introduction", introduction);
+        return json;
     }
 
 
