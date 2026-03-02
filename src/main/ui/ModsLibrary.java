@@ -5,11 +5,20 @@ import java.util.Scanner;
 import model.Game;
 import model.Mod;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 //ModsLibrary application
 public class ModsLibrary {
 
     private Scanner input;
     private Game game;
+    private static final String JSON_STORE = "./data/game.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     public ModsLibrary() {
         ModsLibrary();
@@ -51,6 +60,10 @@ public class ModsLibrary {
             doUpdateAuthor();
         } else if (command.equals("m")) {
             doViewAuthor();
+        } else if (command.equals("p")) {
+            doSaveGame();
+        } else if (command.equals("l")) {
+            doLoadGame();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -62,6 +75,9 @@ public class ModsLibrary {
     private void init() {
         input = new Scanner(System.in);
         game = new Game("Sekiro: shadow die twice");
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: displays menu of options to user
@@ -74,6 +90,8 @@ public class ModsLibrary {
         System.out.println("\tc -> change the author of a mod");
         System.out.println("\tm -> view the author of a mod");
         System.out.println("\tq -> quit");
+        System.out.println("\tp -> save game to file");
+        System.out.println("\tl -> load game from file");
     }
 
     // MODIFIES: this
@@ -191,6 +209,26 @@ public class ModsLibrary {
         }
         if (!found) {
             System.out.println("Mod " + name + " not found!");
+        }
+    }
+
+    private void doSaveGame() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(game);
+            jsonWriter.close();
+            System.out.println("Saved " + game.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+    
+    private void doLoadGame() {
+        try {
+            game = jsonReader.read();
+            System.out.println("Loaded " + game.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }
