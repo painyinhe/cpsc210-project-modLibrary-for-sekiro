@@ -21,16 +21,16 @@ public class ModsLibrary {
     private JsonReader jsonReader;
 
     public ModsLibrary() {
-        ModsLibrary();
+        runModsLibrary();
     }
 
-    private void ModsLibrary() {
+    private void runModsLibrary() {
         boolean keepGoing = true;
         String command = null;
 
         init();
 
-        while(keepGoing) {
+        while (keepGoing) {
             displayMenu();
             command = input.next();
             input.nextLine();
