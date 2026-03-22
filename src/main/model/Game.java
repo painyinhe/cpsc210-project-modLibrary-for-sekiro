@@ -18,7 +18,7 @@ public class Game implements Writable {
 
     // MODIFIES: THIS
     // EFFECTS: ADD A MOD WHICH IS NOT IN THE MOD LIST OF THIS GAME
-    public void addMod(Mod mod){
+    public void addMod(Mod mod) {
         if (!mods.contains(mod)) {
             mods.add(mod);
         }
