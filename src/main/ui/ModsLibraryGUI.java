@@ -43,7 +43,7 @@ public class ModsLibraryGUI extends JFrame{
     // EFFECTS: sets up the main frame
     private void initializeFrame() {
         setTitle("Game Mod Library");
-        setSize(900, 600);
+        setSize(900, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -69,12 +69,10 @@ public class ModsLibraryGUI extends JFrame{
         gameNameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         topPanel.add(gameNameLabel, BorderLayout.NORTH);
 
-        imageLabel = new JLabel("MOD LIBRARY", SwingConstants.CENTER);
-        imageLabel.setPreferredSize(new Dimension(200, 80));
-        imageLabel.setOpaque(true);
-        imageLabel.setBackground(new Color(220, 220, 220));
+        ImageIcon icon = new ImageIcon("./data/modbanner.jpg");
+        imageLabel = new JLabel(icon);
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        imageLabel.setFont(new Font("Arial", Font.BOLD, 24));
         topPanel.add(imageLabel, BorderLayout.CENTER);
 
         return topPanel;
