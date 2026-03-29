@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Game;
 import model.Mod;
 import persistence.JsonReader;
@@ -11,7 +13,7 @@ import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ModsLibraryGUI extends JFrame{
+public class ModsLibraryGUI extends JFrame {
 
     private static final String JSON_STORE = "./data/game.json";
 
@@ -44,11 +46,33 @@ public class ModsLibraryGUI extends JFrame{
     private void initializeFrame() {
         setTitle("Game Mod Library");
         setSize(900, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
+        addWindowClosingBehaviour();
     }
 
+    private void addWindowClosingBehaviour() {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                handleWindowClosing();
+            }
+        });
+    }
+
+    private void handleWindowClosing() {
+        printEventLog();
+        dispose();
+        System.exit(0);
+    }
+
+    private void printEventLog() {
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event);
+            System.out.println();
+        }
+    }
 
     // MODIFIES: this
     // EFFECTS: initializes all GUI components

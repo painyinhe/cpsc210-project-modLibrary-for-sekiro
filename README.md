@@ -22,3 +22,13 @@ This app will show a brief introduction of the mods and the author of the mod.
 - As an user, I want to view the author of a mod.
 - As an user, I want to be able to save my mod list (if I so choose)
 - As an user, I want to be able to load my mod list (if I so choose)
+
+## Phase 4 Task 2
+Sun Mar 29 02:13:34 PDT 2026
+Game "Sekiro: shadow die twice" loaded from file "./data/game.json".
+
+Sun Mar 29 02:13:48 PDT 2026
+Author changed for mod "resurrection" to "not me".
+
+Sun Mar 29 02:13:49 PDT 2026
+Game "Sekiro: shadow die twice" saved to file "./data/game.json".

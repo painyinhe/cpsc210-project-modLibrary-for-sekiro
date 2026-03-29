@@ -2,9 +2,8 @@ package persistence;
 
 import org.json.JSONObject;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
+import model.Event;
+import model.EventLog;
 import model.Game;
 
 import java.io.*;
@@ -32,6 +31,8 @@ public class JsonWriter {
     public void write(Game g) {
         JSONObject json = g.toJson();
         saveToFile(json.toString(TAB));
+        EventLog.getInstance().logEvent(
+                new Event("Game \"" + g.getName() + "\" saved to file \"" + destination + "\"."));
     }
 
     // MODIFIES: this

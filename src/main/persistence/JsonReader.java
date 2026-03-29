@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.Event;
+import model.EventLog;
 import model.Game;
 import model.Mod;
 
@@ -26,6 +28,9 @@ public class JsonReader {
     public Game read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        Game game = parseGame(jsonObject);
+        EventLog.getInstance().logEvent(
+                new Event("Game \"" + game.getName() + "\" loaded from file \"" + source + "\"."));
         return parseGame(jsonObject);
     }
 
@@ -55,7 +60,7 @@ public class JsonReader {
         for (Object json : jsonArray) {
             JSONObject jsonMod = (JSONObject) json;
             Mod m = new Mod(jsonMod);
-            g.addMod(m);
+            g.addModFromLoad(m);
         }
     }
 }

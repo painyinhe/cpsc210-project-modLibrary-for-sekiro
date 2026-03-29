@@ -17,8 +17,18 @@ public class Game implements Writable {
     }
 
     // MODIFIES: THIS
-    // EFFECTS: ADD A MOD WHICH IS NOT IN THE MOD LIST OF THIS GAME
+    // EFFECTS: ADD A MOD WHICH IS NOT IN THE MOD LIST OF THIS GAME AND LOG EVENT
     public void addMod(Mod mod) {
+        if (!mods.contains(mod)) {
+            mods.add(mod);
+            EventLog.getInstance().logEvent(
+                    new Event("Mod \"" + mod.getName() + "\" added to game \"" + name + "\"."));
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds mod to game if not already present without logging event (basically for loading a file)
+    public void addModFromLoad(Mod mod) {
         if (!mods.contains(mod)) {
             mods.add(mod);
         }

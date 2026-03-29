@@ -25,15 +25,19 @@ public class Mod implements Writable {
 
 
     //MODIFIES: this
-    //EFFECTS: ADD INFORMATION TO THE MOD.
+    //EFFECTS: ADD INFORMATION TO THE MOD AND LOG EVENT
     public void reviseIntroduction(String introduction) {
         this.introduction = introduction;
+        EventLog.getInstance().logEvent(
+                new Event("Introduction revised for mod \"" + name + "\"."));
     }
 
     //MODIFIES: this
-    //EFFECTS: CHANGE THE NAME OF THE AUTHOR
+    //EFFECTS: CHANGE THE NAME OF THE AUTHOR AND LOG EVENT
     public void changeAuthor(String author) {
         this.author = author;
+        EventLog.getInstance().logEvent(
+                new Event("Author changed for mod \"" + name + "\" to \"" + author + "\"."));
     }
 
     // EFFECTS: turn this Mod into a JSONObject for saving
