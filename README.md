@@ -32,3 +32,7 @@ Author changed for mod "resurrection" to "not me".
 
 Sun Mar 29 02:13:49 PDT 2026
 Game "Sekiro: shadow die twice" saved to file "./data/game.json".
+
+## Phase 4 Task 3
+Reflection: I would make would be to move more application logic into the model layer. Right now, some logic for finding and updating mods is repeating meaninglessly. A better design would be to let `Game` handle more of that work, such as writing a new method called `searchMod`. This would reduce duplicated code.
+Also there is a new function I'd like to add. The current app is more like a mod list for SEKIRO, if this can be turned into a game library, that would be much better.
